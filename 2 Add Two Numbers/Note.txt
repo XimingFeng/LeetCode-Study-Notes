@@ -1,0 +1,23 @@
+Lets write it down the example
+
+ (2 -> 4 -> 3)
+ (5 -> 6 -> 4)
+
+seems like  we can use one loop to iterate through the two link list at the same time
+but in case of different length of link lists, we need to check if node is Null each time when we jump to the next node
+
+In the second situation when the sum of two digits is greater than 10, we just need the reminder of the sum and use a variable to carry digit 1 to the next 
+node or nodes.   
+
+------------------------------------------------------------
+Note:
+int* a;
+for(int i = 0; i < 10; i ++)
+{
+    int b = 0;
+    a = b&;
+    cout << "The address of the integer is " << a << endl;
+}
+
+---------------------output-----------------
+all the output would be the same address
