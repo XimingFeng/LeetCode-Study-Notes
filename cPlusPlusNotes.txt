@@ -1,0 +1,35 @@
+1. new and delete operators in C++ for dynamic memory
+void main()
+{
+	int* a;
+	for(int i = 0; i < 2; i ++)
+	{
+	    int b = 0;
+	    a = &b;
+	    cout << "The address of the integer is " << a << endl;
+	}
+
+	cout << "-------------------------------------" << endl;
+	int* c;
+	for(int i = 0; i < 2; i ++)
+	{
+	    c = new int(0);
+	    cout << "The address of the integer is " << c << endl;
+	}
+}
+
+
+
+
+/*
+Output:
+The address of the integer is 0137FABC
+The address of the integer is 0137FABC
+-------------------------------------
+The address of the integer is 001F31D8
+The address of the integer is 001E0538
+
+
+When declare a variable in a loop, without new 
+*/
+	https://www.geeksforgeeks.org/new-and-delete-operators-in-cpp-for-dynamic-memory/

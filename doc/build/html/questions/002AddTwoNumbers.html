@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Add two numbers &mdash; lc_doc 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ Notes" href="../cplusplusNotes/index.html" />
+    <link rel="prev" title="Questions" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> lc_doc
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Questions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Add two numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cplusplusNotes/index.html">C++ Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">lc_doc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Questions</a> &raquo;</li>
+        
+      <li>2. Add two numbers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/questions/002AddTwoNumbers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="add-two-numbers">
+<h1>2. Add two numbers<a class="headerlink" href="#add-two-numbers" title="Permalink to this headline">¶</a></h1>
+<p>Lets write it down the example</p>
+<blockquote>
+<div><ul class="simple">
+<li>(2 -&gt; 2 -&gt; 3)</li>
+<li>(5 -&gt; 6 -&gt; 4)</li>
+</ul>
+</div></blockquote>
+<p>seems like  we can use one loop to iterate through the two link list at the same time
+but in case of different length of link lists, we need to check if node is Null each time when we jump to the next node</p>
+<blockquote>
+<div><ul class="simple">
+<li>(2 -&gt; 4 -&gt; 3)</li>
+<li>(5 -&gt; 6 -&gt; 4)</li>
+</ul>
+</div></blockquote>
+<p>In the second situation when the sum of two digits is greater than 10, we just need the reminder of the sum and use a variable to carry digit 1 to the next
+node or nodes, lets call this variable carry.</p>
+<blockquote>
+<div><ul class="simple">
+<li>(2 -&gt; 2 -&gt; 6)</li>
+<li>(5 -&gt; 6 -&gt; 4)</li>
+</ul>
+</div></blockquote>
+<p>In the third situation, when the we need to add new node even if we have reached the end of both linked list since the sum is of the last digits is more
+than 10. So for the loop, we can add one more criteria to check the variable carry is true or false. So when we reach the end of both linked list, if check is true, we create a new node and add one to the value of the node.</p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cm">/* Definition for singly-linked list. */</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="p">{</span>
+     <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+     <span class="n">ListNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+     <span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="n">class</span> <span class="n">Solution</span> <span class="p">{</span>
+<span class="nl">public</span><span class="p">:</span>
+    <span class="n">ListNode</span><span class="o">*</span> <span class="n">addTwoNumbers</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span> <span class="n">l1</span><span class="p">,</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">carry</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">result_p</span><span class="p">;</span>
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">current_node</span><span class="p">;</span>
+
+        <span class="n">ListNode</span> <span class="nf">ln</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">result_p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ln</span><span class="p">;</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ln</span><span class="p">;</span>
+
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">new_node_p</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">l1</span> <span class="o">||</span> <span class="n">l2</span> <span class="o">||</span> <span class="n">carry</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">l1</span> <span class="o">?</span> <span class="n">l1</span> <span class="o">-&gt;</span> <span class="nl">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">l2</span> <span class="o">?</span> <span class="n">l2</span> <span class="o">-&gt;</span> <span class="nl">val</span><span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">carry</span><span class="p">)</span> <span class="n">sum</span><span class="o">++</span><span class="p">;</span>
+
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">?</span> <span class="n">l1</span><span class="o">-&gt;</span><span class="nl">next</span><span class="p">:</span> <span class="nb">NULL</span><span class="p">;</span>
+            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">?</span> <span class="n">l2</span><span class="o">-&gt;</span><span class="nl">next</span><span class="p">:</span> <span class="nb">NULL</span><span class="p">;</span>
+
+            <span class="n">carry</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">);</span>
+            <span class="n">current_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">10</span><span class="p">);</span>
+            <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">int_p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// cout &lt;&lt; &quot;starting node: &quot; &lt;&lt; result_p-&gt;val &lt;&lt; endl;</span>
+        <span class="k">return</span> <span class="n">ln</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>While debugging, I found I cannot just create a new node in the while loop without using “new” key word.
+You can see the note here
+<a class="reference internal" href="../cplusplusNotes/Dynamic Allocation.html#dynamic-allcation"><span class="std std-ref">Dynamic Allocation</span></a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cplusplusNotes/index.html" class="btn btn-neutral float-right" title="C++ Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ximing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
