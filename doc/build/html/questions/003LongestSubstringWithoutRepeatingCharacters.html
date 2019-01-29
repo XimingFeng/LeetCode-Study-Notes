@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Longest Substring Without Repeating Characters &mdash; lc_doc 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ Notes" href="../cplusplusNotes/index.html" />
+    <link rel="prev" title="2. Add two numbers" href="002AddTwoNumbers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> lc_doc
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="002AddTwoNumbers.html">2. Add two numbers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Longest Substring Without Repeating Characters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sliding-window-with-hash-table">Sliding window with hash table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sliding-window-with-array">Sliding window with array</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cplusplusNotes/index.html">C++ Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">lc_doc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Questions</a> &raquo;</li>
+        
+      <li>3. Longest Substring Without Repeating Characters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/questions/003LongestSubstringWithoutRepeatingCharacters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="longest-substring-without-repeating-characters">
+<h1>3. Longest Substring Without Repeating Characters<a class="headerlink" href="#longest-substring-without-repeating-characters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sliding-window-with-hash-table">
+<span id="question3"></span><h2>Sliding window with hash table<a class="headerlink" href="#sliding-window-with-hash-table" title="Permalink to this headline">¶</a></h2>
+<p>When I see substring problems what I would usually try is called sliding window.
+It uses two indexes representing the start and the end of a subtring. When they iterate through the target string, it is like a window sliding through the target string and the string inside of the window is what we are interested in.The contraint of the indexes are starting index should not be greater than of ending index.</p>
+<p>Let’s assume that the starting index is j and ending index is i. The goal is to find the longest substring with unique characters. So, if we can not find any character in the window the same as the character indexed by i, we should expand the window include the character indexed by i. What if we find a character in the window the same as the character indexed by i, that means we have find the longest substring with current starting index j. If it is the longest substring we have ever seen, we update the result. After the comparison, we need to move j to duplicated character and go one step further, because if j is on or before the character, the subtring would be two same characters and it would be invalide.</p>
+<p>In order to make the look up in substring fast, we can use a hash table to store the characters as keys and their locations or index as values. With hashtable, the lookup would be decreased to O(1) a constant.</p>
+<p>Here is the code:</p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">class</span> <span class="n">Solution</span> <span class="p">{</span>
+  <span class="nl">public</span><span class="p">:</span>
+      <span class="kt">int</span> <span class="n">lengthOfLongestSubstring</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+
+          <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">prev_char_map</span><span class="p">;</span>
+          <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">())</span>
+          <span class="p">{</span>
+
+              <span class="k">if</span> <span class="p">(</span><span class="n">prev_char_map</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="n">prev_char_map</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+              <span class="p">{</span>
+                  <span class="n">j</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">prev_char_map</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="p">;</span>
+              <span class="p">}</span>
+              <span class="n">max_length</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_length</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+              <span class="n">prev_char_map</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+              <span class="n">i</span> <span class="o">++</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">return</span> <span class="n">max_length</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here is what I found during implementing the code. We don’t need to delete the entry in the table hash table so that it always reflect the current substring, if we find an entry in the hash table, that means we have seen this character but if the value of the character in less than j, that means that character is not in the current substring anymore so that we can just ignore it and updated its value to the new index, which is i.</p>
+<p>With that algorithm implemented, i would iterate through the string s one time and j, worst case senario would also iterate through the string s one time. The worst case is
+‘aaaaaaaaaaaaa’. So the time complexity would be O(n).
+As for the space complexity, we need a hash table to store the character we have seen so far so that it wounl be O(min(len(s), m). m is the length of all possible characters.</p>
+</div>
+<div class="section" id="sliding-window-with-array">
+<h2>Sliding window with array<a class="headerlink" href="#sliding-window-with-array" title="Permalink to this headline">¶</a></h2>
+<p>If we can have the assumption on the characters such as that they are ASCII characters, we don’t need a hash table, instead we just need to use array with the size of 256.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cplusplusNotes/index.html" class="btn btn-neutral float-right" title="C++ Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="002AddTwoNumbers.html" class="btn btn-neutral" title="2. Add two numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ximing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

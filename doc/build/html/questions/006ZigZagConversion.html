@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Questions &mdash; lc_doc 0.0.1 documentation</title>
+  <title>6. ZigZag Conversion &mdash; lc_doc 0.0.1 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Add two numbers" href="002AddTwoNumbers.html" />
-    <link rel="prev" title="Welcome to lc_doc’s documentation!" href="../index.html" /> 
+    <link rel="next" title="C++ Notes" href="../cplusplusNotes/index.html" />
+    <link rel="prev" title="3. Longest Substring Without Repeating Characters" href="003LongestSubstringWithoutRepeatingCharacters.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -80,10 +80,10 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Questions</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Questions</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="002AddTwoNumbers.html">2. Add two numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="003LongestSubstringWithoutRepeatingCharacters.html">3. Longest Substring Without Repeating Characters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="006ZigZagConversion.html">6. ZigZag Conversion</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. ZigZag Conversion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cplusplusNotes/index.html">C++ Notes</a></li>
@@ -133,13 +133,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Questions</li>
+          <li><a href="index.html">Questions</a> &raquo;</li>
+        
+      <li>6. ZigZag Conversion</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/questions/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/questions/006ZigZagConversion.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -152,19 +154,151 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="questions">
-<h1>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="002AddTwoNumbers.html">2. Add two numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="003LongestSubstringWithoutRepeatingCharacters.html">3. Longest Substring Without Repeating Characters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="003LongestSubstringWithoutRepeatingCharacters.html#sliding-window-with-hash-table">Sliding window with hash table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="003LongestSubstringWithoutRepeatingCharacters.html#sliding-window-with-array">Sliding window with array</a></li>
+  <div class="section" id="zigzag-conversion">
+<h1>6. ZigZag Conversion<a class="headerlink" href="#zigzag-conversion" title="Permalink to this headline">¶</a></h1>
+<p>Let’s write this example down. If we use the index of the string s instead of the characters. We can get the following example</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="14%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>6</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>12</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>…</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>&#160;</td>
+<td>5</td>
+<td>7</td>
+<td>&#160;</td>
+<td>11</td>
+<td>13</td>
+<td>&#160;</td>
+<td>17</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>4</td>
+<td>&#160;</td>
+<td>8</td>
+<td>10</td>
+<td>&#160;</td>
+<td>14</td>
+<td>16</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>9</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>15</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>The distances betwenn two horizontally adjacent node</p>
+<ul class="simple">
+<li>1st row: 6, 6, 6, 6 ….</li>
+<li>2nd row: 4, 2, 4, 2, 4, 2 …</li>
+<li>3rd row: 2, 4, 2, 4, 2, 4 …</li>
+<li>4th row: 6, 6, 6, 6, 6, 6 …</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="006ZigZagConversion.html">6. ZigZag Conversion</a></li>
+<p>This example give me some idea but I am still not clear what the pattern is. So I want more rows, we can have examples like this</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>8</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>7</td>
+<td>9</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>15</td>
+<td>17</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>&#160;</td>
+<td>6</td>
+<td>&#160;</td>
+<td>10</td>
+<td>&#160;</td>
+<td>14</td>
+<td>&#160;</td>
+<td>18</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>5</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>11</td>
+<td>13</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>19</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>12</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>The distances betwenn two horizontally adjacent nodes are</p>
+<ul class="simple">
+<li>1st row: 8, 8, 8, 8 ….</li>
+<li>2nd row: 6, 2, 6, 2 ….</li>
+<li>3rd row: 4, 4, 4, 4 ….</li>
+<li>4th row: 2, 6, 2, 6 ….</li>
+<li>5th row: 8, 8, 8, 8 ….</li>
 </ul>
-</div>
+<p>Now we have some ideas of the patterns: for the first and the last row, the distance is a constant: :math: <cite>row_num * 2 - 2</cite>.</p>
 </div>
 
 
@@ -175,10 +309,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="002AddTwoNumbers.html" class="btn btn-neutral float-right" title="2. Add two numbers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cplusplusNotes/index.html" class="btn btn-neutral float-right" title="C++ Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Welcome to lc_doc’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="003LongestSubstringWithoutRepeatingCharacters.html" class="btn btn-neutral" title="3. Longest Substring Without Repeating Characters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

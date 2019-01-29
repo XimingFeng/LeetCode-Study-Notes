@@ -12,6 +12,7 @@ Welcome to lc_doc's documentation!
 
    questions/index
    cplusplusNotes/index
+   algorithms/index
 
 
 Indices and tables
