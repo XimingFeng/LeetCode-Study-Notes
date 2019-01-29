@@ -3,7 +3,7 @@ Questions
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    002AddTwoNumbers
    003LongestSubstringWithoutRepeatingCharacters
